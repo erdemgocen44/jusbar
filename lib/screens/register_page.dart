@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:jusbar/screens/jusbar_menu_page.dart';
-import 'package:jusbar/screens/register_page.dart';
 
-class HomePage extends StatefulWidget {
+class RegisterPage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _RegisterPageState createState() => _RegisterPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _RegisterPageState extends State<RegisterPage> {
   TextEditingController _textEditingController;
   final _formKey = GlobalKey<FormState>();
   @override
@@ -21,14 +20,14 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               SizedBox(
-                height: 100,
+                height: 50,
               ),
               Text(
-                'Login',
+                'Register',
                 style: buildTextStyle16(),
               ),
               SizedBox(
-                height: 35,
+                height: 25,
               ),
               Padding(
                 padding: const EdgeInsets.all(30.0),
@@ -36,17 +35,25 @@ class _HomePageState extends State<HomePage> {
                   key: _formKey,
                   child: Column(
                     children: [
-                      buildTextFormField('Username'),
+                      buildTextFormField('Name'),
                       SizedBox(
                         height: 20,
                       ),
-                      buildTextFormField('Password'),
+                      buildTextFormField('E-Mail'),
                       SizedBox(
-                        height: 50,
+                        height: 20,
+                      ),
+                      buildTextFormField('Mobile'),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      buildTextFormField('Create Password'),
+                      SizedBox(
+                        height: 40,
                       ),
                       buildContainerButton(),
                       SizedBox(
-                        height: 50,
+                        height: 40,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -95,19 +102,13 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                       SizedBox(
-                        height: 100,
+                        height: 50,
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           buildTextButtonAlt(
-                            'Forgot Password',
-                            Color(
-                              0xFF939393,
-                            ),
-                          ),
-                          buildTextButtonAlt(
-                            'Create new account',
+                            'Already have an account? Login',
                             Color(
                               0xFF939393,
                             ),
@@ -127,12 +128,7 @@ class _HomePageState extends State<HomePage> {
 
   TextButton buildTextButtonAlt(String text, Color renk) {
     return TextButton(
-      onPressed: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => RegisterPage()),
-        );
-      },
+      onPressed: () {},
       child: Text(
         text,
         style: TextStyle(
@@ -178,7 +174,7 @@ class _HomePageState extends State<HomePage> {
           );
         },
         child: Text(
-          ' Login ',
+          'Register',
           style: TextStyle(
             fontSize: 14,
             color: Colors.white,
