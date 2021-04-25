@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jusbar/screens/home_page.dart';
 import 'package:jusbar/screens/jusbar_menu_page.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -104,16 +105,11 @@ class _RegisterPageState extends State<RegisterPage> {
                       SizedBox(
                         height: 50,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          buildTextButtonAlt(
-                            'Already have an account? Login',
-                            Color(
-                              0xFF939393,
-                            ),
-                          ),
-                        ],
+                      buildTextButtonAlt(
+                        'Already have an account? Login',
+                        Color(
+                          0xFF939393,
+                        ),
                       ),
                     ],
                   ),
@@ -128,7 +124,12 @@ class _RegisterPageState extends State<RegisterPage> {
 
   TextButton buildTextButtonAlt(String text, Color renk) {
     return TextButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => HomePage()),
+        );
+      },
       child: Text(
         text,
         style: TextStyle(
