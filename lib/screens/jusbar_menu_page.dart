@@ -1,15 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:jusbar/TabBarPages/smoothies_page.dart';
 
+import 'home_page.dart';
+import 'register_page.dart';
+
 class JusbarMenuPage extends StatefulWidget {
   @override
   _JusbarMenuPageState createState() => _JusbarMenuPageState();
 }
 
 class _JusbarMenuPageState extends State<JusbarMenuPage> {
+  int _selectedIndex = 0;
+  final List<Widget> ekranlar = [
+    RegisterPage(),
+    HomePage(),
+    JusbarMenuPage(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
+      initialIndex: 1,
       length: 4,
       child: Scaffold(
         appBar: AppBar(
@@ -22,7 +39,7 @@ class _JusbarMenuPageState extends State<JusbarMenuPage> {
             ),
             IconButton(
                 icon: Icon(
-                  Icons.face,
+                  Icons.alarm,
                   color: Color(0xffD3D8E0),
                   size: 30,
                 ),
@@ -40,26 +57,34 @@ class _JusbarMenuPageState extends State<JusbarMenuPage> {
               ),
             ),
           ),
-          bottom: TabBar(
-            tabs: [
-              buildTab(
-                'smoothies',
-                Colors.black,
-              ),
-              buildTab(
-                'pastry',
-                Color(0xffD0D0D0),
-              ),
-              buildTab(
-                'icemix',
-                Color(0xffD0D0D0),
-              ),
-              buildTab(
-                'mix',
-                Color(0xffD0D0D0),
-              ),
-            ],
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(40.0),
+            child: TabBar(
+              isScrollable: true,
+              unselectedLabelColor: Colors.amber.withOpacity(0.3),
+              indicatorColor: Colors.amber,
+              indicatorWeight: 7,
+              labelColor: Colors.black,
+              tabs: [
+                buildTab('smoothies', Colors.black, 15),
+                buildTab('  pastry ', Colors.black, 15),
+                buildTab('  icemix  ', Colors.black, 15),
+                buildTab('   mix   ', Colors.black, 15),
+              ],
+            ),
           ),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.amber,
+          onTap: _onItemTapped,
+          elevation: 10,
+          items: [
+            buildBottomNavigationBarItem(Icon(Icons.home), "Home"),
+            buildBottomNavigationBarItem(
+                Icon(Icons.shopping_cart), "Shopping Cart"),
+            buildBottomNavigationBarItem(Icon(Icons.person), "Personal"),
+          ],
         ),
         body: TabBarView(
           children: [
@@ -73,12 +98,19 @@ class _JusbarMenuPageState extends State<JusbarMenuPage> {
     );
   }
 
-  Tab buildTab(String text, Color renk) {
+  BottomNavigationBarItem buildBottomNavigationBarItem(Icon ikon, String yazi) {
+    return BottomNavigationBarItem(
+      icon: ikon,
+      label: yazi,
+    );
+  }
+
+  Tab buildTab(String text, Color renk, double size) {
     return Tab(
       child: Text(
         text,
         style: TextStyle(
-          fontSize: 15,
+          fontSize: size,
           color: renk,
         ),
       ),
