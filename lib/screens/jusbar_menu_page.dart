@@ -66,7 +66,7 @@ class _JusbarMenuPageState extends State<JusbarMenuPage> {
         IconButton(
             icon: Icon(
               Icons.alarm,
-              color: Color(0xffD3D8E0),
+              color: Colors.blueAccent,
               size: 30,
             ),
             onPressed: () {}),
