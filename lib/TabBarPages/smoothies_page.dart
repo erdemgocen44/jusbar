@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jusbar/screens/productView.dart';
 
 class SmoothiesPage extends StatefulWidget {
   @override
@@ -36,40 +37,50 @@ class _SmoothiesPageState extends State<SmoothiesPage> {
           flex: 3,
           child: Padding(
             padding: const EdgeInsets.all(15.0),
-            child: Container(
-              height: MediaQuery.of(context).size.height * 0.12,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(
-                  50,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProductView(),
+                  ),
+                );
+              },
+              child: Container(
+                height: MediaQuery.of(context).size.height * 0.12,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(
+                    50,
+                  ),
+                  shape: BoxShape.rectangle,
+                  gradient: LinearGradient(
+                    colors: [
+                      renk1,
+                      renk2,
+                    ],
+                  ),
                 ),
-                shape: BoxShape.rectangle,
-                gradient: LinearGradient(
-                  colors: [
-                    renk1,
-                    renk2,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      icecekAdi,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                      ),
+                    ),
+                    Text(
+                      fiyat,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ],
                 ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    icecekAdi,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
-                    ),
-                  ),
-                  Text(
-                    fiyat,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
               ),
             ),
           ),
