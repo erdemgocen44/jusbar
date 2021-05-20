@@ -4,6 +4,9 @@ AppBar buildDefaultAppBar(
   String title,
 ) {
   return AppBar(
+    iconTheme: IconThemeData(
+      color: Color(0xffC2C8D1), //change your color here
+    ),
     backgroundColor: Color(0xffFCFCFC),
     actions: [
       Padding(

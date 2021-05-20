@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:jusbar/TabBarPages/smoothies_page.dart';
+import 'package:jusbar/screens/myCart.dart';
 
 import 'home_page.dart';
+import 'paymentPage.dart';
 import 'register_page.dart';
 
 class JusbarMenuPage extends StatefulWidget {
@@ -12,9 +14,9 @@ class JusbarMenuPage extends StatefulWidget {
 class _JusbarMenuPageState extends State<JusbarMenuPage> {
   int _selectedIndex = 0;
   final List<Widget> ekranlar = [
-    RegisterPage(),
-    HomePage(),
     JusbarMenuPage(),
+    MyCartPage(),
+    PaymentPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -56,6 +58,9 @@ class _JusbarMenuPageState extends State<JusbarMenuPage> {
 
   AppBar buildAppBar() {
     return AppBar(
+      iconTheme: IconThemeData(
+        color: Color(0xffC2C8D1), //change your color here
+      ),
       backgroundColor: Color(0xffFCFCFC),
       actions: [
         Padding(
