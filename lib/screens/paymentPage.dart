@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'defaultAppBar.dart';
+import 'paymentSuccessPage.dart';
 
 class PaymentPage extends StatefulWidget {
   @override
@@ -57,13 +58,13 @@ class _PaymentPageState extends State<PaymentPage> {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.all(30.0),
+              padding: const EdgeInsets.only(left: 30.0, right: 30, top: 30),
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.8,
-                height: MediaQuery.of(context).size.height * 0.4,
+                height: MediaQuery.of(context).size.height * 0.30,
                 decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(30))),
+                  color: Colors.white,
+                ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -79,50 +80,67 @@ class _PaymentPageState extends State<PaymentPage> {
                     buildDefaultText("Cash On Delivery", FontWeight.w100,
                         Color(0xff939393), 14),
                     buildDividerContainer(Color(0xff383838)),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                Color(0xff348DEA),
-                                Color(0xff9AFFE4),
-                              ],
-                            ),
-                          ),
-                          child: TextButton(
-                            onPressed: () {},
-                            child: Column(
-                              children: [
-                                buildDefaultText("Payment Amount",
-                                    FontWeight.w100, Color(0xffffffff), 9),
-                                buildDefaultText("₹150.00", FontWeight.bold,
-                                    Color(0xffffffff), 19),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                Color(0xff9AFFE4),
-                                Color(0xff348DEA),
-                              ],
-                            ),
-                          ),
-                          child: TextButton(
-                            onPressed: () {},
-                            child: buildDefaultText("₹150.00", FontWeight.bold,
-                                Color(0xffffffff), 19),
-                          ),
-                        ),
-                      ],
-                    ),
                   ],
                 ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    height: MediaQuery.of(context).size.height * 0.1,
+                    decoration: BoxDecoration(
+                      borderRadius:
+                          BorderRadius.only(bottomLeft: Radius.circular(30)),
+                      gradient: LinearGradient(
+                        colors: [
+                          Color(0xff348DEA),
+                          Color(0xff9AFFE4),
+                        ],
+                      ),
+                    ),
+                    child: TextButton(
+                      onPressed: () {},
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          buildDefaultText("Payment Amount", FontWeight.w100,
+                              Color(0xffffffff), 9),
+                          buildDefaultText("₹150.00", FontWeight.bold,
+                              Color(0xffffffff), 19),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.4,
+                    height: MediaQuery.of(context).size.height * 0.1,
+                    decoration: BoxDecoration(
+                      borderRadius:
+                          BorderRadius.only(bottomRight: Radius.circular(30)),
+                      gradient: LinearGradient(
+                        colors: [
+                          Color(0xff9AFFE4),
+                          Color(0xff348DEA),
+                        ],
+                      ),
+                    ),
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PaymentSuccessPage()));
+                      },
+                      child: buildDefaultText(
+                          "Pay", FontWeight.bold, Color(0xffffffff), 19),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
